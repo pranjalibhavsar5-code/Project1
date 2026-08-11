@@ -1,20 +1,15 @@
-import streamlit as st 
-import mysql.connector
-  con = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passward="root",
-    database="registration"
-
-  )
-  return con
+import streamlit as st
+from new import add_student
 
 st.title("REGISTER PAGE")
 name = st.text_input("Enter username ", placeholder=" enter here")
-roll = st.text_input("Enter roll", placeholder="Enter roll number")
+roll = st.number_input("Enter roll", placeholder="Enter roll number")
 # roll_number = st.number_input("Enter Roll no", 1, 100)
 # hsc_per=st.number_input("HSC parcentages", 0.0, 100.0)
-button=st.button("submit")
+if st.button("submit"):
+   add_student(name, roll)
+   st.success("Student added")
+
 # col1, col2 =st.columns(2)
 # with col1:
 #     login = st.button("login")
